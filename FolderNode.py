@@ -4,6 +4,7 @@ class FolderNode(object):
     def __init__(self, name:str):
         self.name = name
         self.size = 0
+        self.toRemove = False
     
     def getLabel(self) -> str:
         return self.name + ' - ' + humanize.naturalsize(self.size)

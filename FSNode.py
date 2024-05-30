@@ -1,10 +1,12 @@
+import humanize
+
 class FSNode(object):        
     def __init__(self, name:str, size:int):
         self.name = name
         self.size = size
     
     def getLabel(self) -> str:
-        return self.name + ' - ' + str(self.size)
+        return self.name + ' - ' + humanize.naturalsize(self.size)
     
     def isDir(self) -> bool:
         raise "Should not be called!"

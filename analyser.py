@@ -3,6 +3,10 @@ import argparse
 from treelib import Tree, Node
 from FSNode import *
 
+# TODO: 
+# - Add depth limit on graph
+# - Find way of diplaying graph or better saving mechanism
+# - Make larger values of each level more obvious
 
 def main():
     args = initArgParser()

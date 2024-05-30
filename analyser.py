@@ -4,15 +4,17 @@ from treelib import Tree, exceptions
 from FolderNode import *
 
 # TODO: 
-# - Avoid recursion
 # - Find way of diplaying graph or better saving mechanism
 # - Make larger values of each level more obvious
 # - Comments
 
 DEFAULT_MIN_SIZE = 1
+DEFAULT_FILE_LOCATION = "graph.txt"
 
 def main():
     args = initArgParser()
+    if Path(DEFAULT_FILE_LOCATION).exists():
+        raise ValueError("Can't output graph: File already exists at '" + DEFAULT_FILE_LOCATION + "'")
     maxDepth = args.depth
     initialRoot = Path(args.root)
     tree = Tree()
@@ -29,7 +31,7 @@ def main():
             
     setLabels(tree)    
     removeUnwantedNodes(tree, maxDepth, args.minSize)        
-    tree.save2file("graph.txt")
+    tree.save2file(DEFAULT_FILE_LOCATION)
 
 def initArgParser() -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="Disk Usage Analyser", description="Plots disk usage in a tree plot")

@@ -21,7 +21,7 @@ def main():
             updateSizes(tree, fullPath, fileSize)
             
     setDirLabels(tree)    
-    tree.show(line_type='ascii')
+    tree.save2file("graph.txt")
 
 def initArgParser() -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="Disk Usage Analyser", description="Plots disk usage in a tree plot")

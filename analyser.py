@@ -48,16 +48,12 @@ def addFolderNode(tree: Tree, path: Path, node: FolderNode, maxDepth:int|None) -
 def updateSizes(tree: Tree, path: Path, size:int) -> None:
     try:
         node = tree.get_node(str(path.parent))
+        while node != None:
+            node.data.addToSize(size) 
+            node = tree.parent(node.identifier)
     except Exception as e:
         print("Size update failed")
         print(e)
-        return
-        
-    if(node == None):
-        return
-    
-    node.data.addToSize(size) 
-    updateSizes(tree, path.parent, size)
     
 def setLabels(tree:Tree) -> None:
     for nodeStr in tree.expand_tree():

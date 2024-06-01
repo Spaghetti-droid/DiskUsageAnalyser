@@ -4,7 +4,7 @@ For any given folder, creates a tree of its descendants, showing how much space 
 
 ## Usage
 
-This is a command line program and should be run in a terminal by executing analyser.py. You can bring up the help message for details on how to use the program with the -h option:
+This is a command line program and should be run in a terminal by executing analyser.py (or analyser.exe). You can bring up the help message for details on how to use the program with the -h option:
 
     analyser.py -h
     usage: analyser.py [-h] [-d DEPTH] [-m MINSIZE] [-o OUTPUTFILE] root
@@ -29,9 +29,15 @@ See the examples below for specific use cases.
 
 ## Installing
 
+### Using executable
+
+Copy the executable where you want to store it.
+
+### Using sources
+
 Copy source files where you want to store them.
 
-### Requirements and Dependencies
+#### Requirements and Dependencies
 
 Disk Usage Analyser requires **python 3.12** to run. It also depends on several libraries, namely:
 - argparse

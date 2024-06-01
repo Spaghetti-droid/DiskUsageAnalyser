@@ -2,7 +2,9 @@
 
 For any given folder, creates a tree of its descendants, showing how much space is taken by each. This tree is saved in a file called 'output.txt' by default.
 
-## Example
+## Examples
+
+### Example 1
 
 Running: 
 
@@ -35,3 +37,36 @@ Produces:
     └── C - 95.5 MB
         └── Not fish - 95.5 MB
           └── jpg - 38.1 MB
+
+### Example 2
+
+Running:
+
+    analyser.py -d 3 -m 100000 Test
+
+Produces:
+
+    Test - 835.7 MB
+    ├── A - 740.2 MB
+    │   └── B - 740.2 MB
+    │       └── Fish - 740.2 MB
+    └── C - 95.5 MB
+        └── Not fish - 95.5 MB
+            └── jpg - 38.1 MB  
+
+
+### Example 3
+
+Running:
+
+    analyser.py -d 2 -m 0 Test
+
+Produces:
+
+    Test - 835.7 MB
+    ├── A - 740.2 MB
+    │   ├── A - 0 Bytes
+    │   └── B - 740.2 MB
+    ├── B - 0 Bytes
+    └── C - 95.5 MB
+        └── Not fish - 95.5 MB

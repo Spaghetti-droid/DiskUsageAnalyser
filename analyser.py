@@ -109,7 +109,7 @@ def setLabels(tree:Tree) -> None:
     """
     for nodeStr in tree.expand_tree():
         node = tree.get_node(nodeStr)
-        node.tag = node.data.getLabel()
+        node.tag = node.data.generateLabel()
 
 def removeUnwantedNodes(tree:Tree, maxDepth:int|None, releventSize:int) -> None:
     """Go through tree and remove all nodes that won't be shown to user

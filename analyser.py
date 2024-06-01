@@ -1,6 +1,6 @@
-from pathlib import Path
 import argparse
 import humanize
+from pathlib import Path
 from treelib import Tree, exceptions
 from FolderNode import *
 

@@ -31,7 +31,7 @@ See the examples below for specific use cases.
 
 Copy source files where you want to store them.
 
-## Requirements and Dependencies
+### Requirements and Dependencies
 
 Disk Usage Analyser requires **python 3.12** to run. It also depends on several libraries, namely:
 - argparse

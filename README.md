@@ -45,7 +45,7 @@ Be sure to install any missing ones with
 
 ## Examples
 
-### Example 1: Display Full Hierarchy
+### Example 1: Display Folder And All Descendents
 
 Running:
 

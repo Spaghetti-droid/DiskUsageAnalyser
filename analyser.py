@@ -9,7 +9,7 @@ from FolderNode import *
 # - Make larger values of each level more obvious
 # - Comments
 
-DEFAULT_MIN_SIZE = 100000000
+DEFAULT_MIN_SIZE = 100_000_000
 DEFAULT_FILE_LOCATION = "output.txt"
 
 def main():
@@ -43,7 +43,7 @@ def initArgParser() -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="analyser.py", description="Plots disk usage in a tree plot")
     parser.add_argument("root", help="The path to the root directory whose contents should be analysed")
     parser.add_argument("-d", "--depth", type=int, help="How many levels of the tree should be displayed. Note that this ONLY affects the display. The analyser will still explore the entire folder hierarchy. Default: no limit.")
-    parser.add_argument("-m", "--minSize", type=int, help="The minimum size that an element should have before it is displayed. Any child of a hidden element is also hidden. Default: " + humanize.naturalsize(DEFAULT_MIN_SIZE), default=DEFAULT_MIN_SIZE)
+    parser.add_argument("-m", "--minSize", type=int, help="The minimum size in bytes that an element should have before it is displayed. Any child of a hidden element is also hidden. Default: " + str(DEFAULT_MIN_SIZE) + " (" + humanize.naturalsize(DEFAULT_MIN_SIZE) + ")" , default=DEFAULT_MIN_SIZE)
     parser.add_argument("-o", "--outputFile", help="Where to save the result. Default: " + str(DEFAULT_FILE_LOCATION), default=DEFAULT_FILE_LOCATION)
 
     return parser.parse_args()

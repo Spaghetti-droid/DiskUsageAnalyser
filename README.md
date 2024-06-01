@@ -4,7 +4,7 @@ For any given folder, creates a tree of its descendants, showing how much space 
 
 ## Usage
 
-This is a command line program and should be run in a terminal by executing analyser.py (or analyser.exe). You can bring up the help message for details on how to use the program with the -h option:
+This is a command line program and should be run in a terminal by executing either analyser.py or analyser.exe depending on what you're using. You can bring up the help message for details on how to use the program with the -h option:
 
     analyser.py -h
     usage: analyser.py [-h] [-d DEPTH] [-m MINSIZE] [-o OUTPUTFILE] root

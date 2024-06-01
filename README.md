@@ -2,6 +2,43 @@
 
 For any given folder, creates a tree of its descendants, showing how much space is taken by each. This tree is saved in a file called 'output.txt' by default.
 
+## Usage
+
+See the help message for details on how to use the program
+
+    analyser.py -h
+    usage: analyser.py [-h] [-d DEPTH] [-m MINSIZE] [-o OUTPUTFILE] root
+
+    Plots disk usage in a tree plot
+
+    positional arguments:
+      root                  The path to the root directory whose contents should be analysed
+
+    options:
+      -h, --help            show this help message and exit
+      -d DEPTH, --depth DEPTH
+                            How many levels of the tree should be displayed. Note that this ONLY affects the display. The
+                            analyser will still explore the entire folder hierarchy. Default: no limit.
+      -m MINSIZE, --minSize MINSIZE
+                            The minimum size in bytes that an element should have before it is displayed. Any child of a
+                            hidden element is also hidden. Default: 100000000 (100.0 MB)
+      -o OUTPUTFILE, --outputFile OUTPUTFILE
+                            Where to save the result. Default: output.txt
+
+## Requirements and Dependencies
+
+Disk Usage Analyser requires python 3.12 to run.
+
+Disk Usage Analyser depends on several libraries, namely:
+- argparse
+- humanize
+- pathlib
+- treelib
+
+Be sure to install any missing ones with
+
+    pip install <library>
+
 ## Examples
 
 ### Example 1

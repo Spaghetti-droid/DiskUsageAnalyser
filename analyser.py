@@ -21,13 +21,18 @@ def main():
     rootNode = FolderNode(initialRoot.name)
     tree.create_node(rootNode.name,str(initialRoot),data=rootNode)
     for root, dirs, files in initialRoot.walk(on_error=print):
-        for dir in dirs: 
-            addFolderNode(tree, root / dir, FolderNode(dir), maxDepth)
+        try:
+            for dir in dirs: 
+                addFolderNode(tree, root / dir, FolderNode(dir), maxDepth)
+            
+            for file in files:
+                fullPath = root / file
+                fileSize = fullPath.stat().st_size
+                updateSizes(tree, fullPath, fileSize)
+        except Exception as e:
+            print("Error during node addition")
+            print(e)
         
-        for file in files:
-            fullPath = root / file
-            fileSize = fullPath.stat().st_size
-            updateSizes(tree, fullPath, fileSize)
             
     setLabels(tree)    
     removeUnwantedNodes(tree, maxDepth, args.minSize)        

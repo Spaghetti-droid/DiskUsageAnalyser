@@ -51,7 +51,10 @@ def main():
     
     # Save
             
-    tree.save2file(args.outputFile)
+    if tree.size():
+        tree.save2file(args.outputFile)
+    else:
+        print("Can't save tree: Tree is empty!")
 
 def initArgParser() -> argparse.Namespace:
     """Defines the arguments that the program can use
@@ -59,7 +62,7 @@ def initArgParser() -> argparse.Namespace:
     Returns:
         argparse.Namespace: The argument values the user specified to the application
     """
-    parser = argparse.ArgumentParser(prog="analyser.py", description="Plots disk usage in a tree plot")
+    parser = argparse.ArgumentParser(prog="analyser.py", description="Plots disk usage in a tree plot, showing the size of each relevant folder in hierarchy. \nOptions determine which folders are displayed, except for the root folder which is always shown.")
     parser.add_argument("root", help="The path to the root directory whose contents should be analysed")
     parser.add_argument("-d", "--depth", type=int, help="How many levels of the tree should be displayed. Note that this ONLY affects the display. The analyser will still explore the entire folder hierarchy. Default: no limit.")
     parser.add_argument("-m", "--minSize", type=int, help="The minimum size in bytes that an element should have before it is displayed. Any child of a hidden element is also hidden. Default: " + str(DEFAULT_MIN_SIZE) + " (" + humanize.naturalsize(DEFAULT_MIN_SIZE) + ")" , default=DEFAULT_MIN_SIZE)
@@ -122,7 +125,7 @@ def removeUnwantedNodes(tree:Tree, maxDepth:int|None, releventSize:int) -> None:
     if(maxDepth != None or releventSize > 0):
         # Do this in 2 goes to avoid upsetting the tree
         nodes = []
-        for node in tree.filter_nodes(lambda x:x.data.toRemove or (x.data.size < releventSize)):
+        for node in tree.filter_nodes(lambda x:x.identifier != tree.root and ( x.data.toRemove or (x.data.size < releventSize) )):
             nodes.append(node)
         
         for node in nodes:

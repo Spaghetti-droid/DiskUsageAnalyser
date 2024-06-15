@@ -133,11 +133,11 @@ def removeUnwantedNodes(tree:Tree, maxDepth:int|None, releventSize:int) -> None:
     """
     if(maxDepth != None or releventSize > 0):
         # Do this in 2 goes to avoid upsetting the tree
-        nodes = []
+        nodesToRemove = []
         for node in tree.filter_nodes(lambda x:x.identifier != tree.root and ( x.data.toRemove or (x.data.size < releventSize) )):
-            nodes.append(node)
+            nodesToRemove.append(node)
         
-        for node in nodes:
+        for node in nodesToRemove:
             try:
                 tree.remove_node(node.identifier)
             except exceptions.NodeIDAbsentError:

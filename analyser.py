@@ -45,9 +45,9 @@ def main():
             print(e)
         
     # Format tree into it's displayed form
-            
-    setLabels(tree)    
+                
     removeUnwantedNodes(tree, maxDepth, args.minSize)
+    setLabels(tree)
     
     # Save
             

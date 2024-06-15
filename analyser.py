@@ -16,8 +16,14 @@ def main():
     # Get arguments from user
     
     args = initArgParser()
-    if Path(args.outputFile).exists():
-        raise ValueError("Can't output graph: File already exists at '" + args.outputFile + "'")
+    forceDelete = args.forceDelete
+    delete = False
+    outPath = Path(args.outputFile)
+    if outPath.exists():
+        delete = forceDelete or input(f"Output file '{args.outputFile}' already exists. Replace? (y/n)") == 'y'
+        if not delete:
+            return
+
     maxDepth = args.depth
     initialRoot = Path(args.root)
     
@@ -52,6 +58,8 @@ def main():
     # Save
             
     if tree.size():
+        if delete:
+            outPath.unlink(True)
         tree.save2file(args.outputFile)
     else:
         print("Can't save tree: Tree is empty!")
@@ -67,6 +75,7 @@ def initArgParser() -> argparse.Namespace:
     parser.add_argument("-d", "--depth", type=int, help="How many levels of the tree should be displayed. Note that this ONLY affects the display. The analyser will still explore the entire folder hierarchy. Default: no limit.")
     parser.add_argument("-m", "--minSize", type=int, help="The minimum size in bytes that an element should have before it is displayed. Any child of a hidden element is also hidden. Default: " + str(DEFAULT_MIN_SIZE) + " (" + humanize.naturalsize(DEFAULT_MIN_SIZE) + ")" , default=DEFAULT_MIN_SIZE)
     parser.add_argument("-o", "--outputFile", help="Where to save the result. Default: " + str(DEFAULT_FILE_LOCATION), default=DEFAULT_FILE_LOCATION)
+    parser.add_argument("-r", "--replace-output", action='store_true', dest="forceDelete", help="Replace output file if it exists without asking.")
 
     return parser.parse_args()
     

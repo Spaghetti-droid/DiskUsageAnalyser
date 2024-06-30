@@ -51,6 +51,8 @@ Be sure to install any missing ones with
 
 ## Examples
 
+In the examples below, I use analyser.py. If you are using the exe version, you can simply substitute analyser.py with analyser.exe.
+
 ### Example 1: Display Folder And All Descendents
 
 Running:

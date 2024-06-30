@@ -171,3 +171,9 @@ Produces:
         └── B - 740.2 MB
             └── Fish - 740.2 MB
                 └── Koi - 542.9 MB
+
+## Generating the executable
+
+The executable can be generated using pyinstaller. In the project root directory, execute:
+    
+    pyinstaller -F analyser.py

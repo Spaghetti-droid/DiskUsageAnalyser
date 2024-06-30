@@ -25,7 +25,8 @@ def main():
             return
 
     maxDepth = args.depth
-    initialRoot = Path(args.root)
+    # Resolve to get real folder name (and not '.' or '..' for instance)
+    initialRoot = Path(args.root).resolve()
     
     # Initialise tree and set root node
     
